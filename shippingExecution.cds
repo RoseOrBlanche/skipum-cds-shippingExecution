@@ -156,7 +156,7 @@ type References
 UI Annotations
 */
 
-annotate shipping_execution.ShipmentProcessingStatus
+annotate ShipmentProcessingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -202,7 +202,7 @@ annotate shipping_execution.ShipmentProcessingStatus
 	);
 };
 
-annotate shipping_execution.ShipmentPackingStatus
+annotate ShipmentPackingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -248,7 +248,7 @@ annotate shipping_execution.ShipmentPackingStatus
 	);
 };
 
-annotate shipping_execution.ShipmentPrintingStatus
+annotate ShipmentPrintingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -294,7 +294,7 @@ annotate shipping_execution.ShipmentPrintingStatus
 	);
 };
 
-annotate shipping_execution.ShipmentTransmitStatus
+annotate ShipmentTransmitStatus
 @( // header-level annotations
 	UI:
 	{
@@ -340,7 +340,7 @@ annotate shipping_execution.ShipmentTransmitStatus
 	);
 };
 
-annotate shipping_execution.LegProcessingStatus
+annotate LegProcessingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -386,7 +386,7 @@ annotate shipping_execution.LegProcessingStatus
 	);
 };
 
-annotate shipping_execution.LegPackingStatus
+annotate LegPackingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -432,7 +432,7 @@ annotate shipping_execution.LegPackingStatus
 	);
 };
 
-annotate shipping_execution.LegPrintingStatus
+annotate LegPrintingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -478,7 +478,7 @@ annotate shipping_execution.LegPrintingStatus
 	);
 };
 
-annotate shipping_execution.LegTransmitStatus
+annotate LegTransmitStatus
 @( // header-level annotations
 	UI:
 	{
@@ -524,7 +524,7 @@ annotate shipping_execution.LegTransmitStatus
 	);
 };
 
-annotate shipping_execution.ManifestProcessingStatus
+annotate ManifestProcessingStatus
 @( // header-level annotations
 	UI:
 	{
@@ -571,7 +571,7 @@ annotate shipping_execution.ManifestProcessingStatus
 };
 
 
-annotate shipping_execution.Incoterm
+annotate Incoterm
 @( // header-level annotations
 	UI:
 	{
@@ -604,7 +604,7 @@ annotate shipping_execution.Incoterm
 	);
 };
 
-annotate shipping_execution.PaymentTerm
+annotate PaymentTerm
 @( // header-level annotations
 	UI:
 	{
@@ -637,7 +637,7 @@ annotate shipping_execution.PaymentTerm
 	);
 };
 
-annotate shipping_execution.Payer
+annotate Payer
 @( // header-level annotations
 	UI:
 	{
@@ -670,15 +670,15 @@ annotate shipping_execution.Payer
 	);
 };
 
-annotate shipping_execution.CarrierAccount @(
+annotate CarrierAccount @(
 	title: '{i18n>carrierAccount}'
 );
 
-annotate shipping_execution.Enabled @(
+annotate Enabled @(
 	title: '{i18n>enabled}'
 );
 
-annotate shipping_execution.CarrierPayer
+annotate CarrierPayer
 {
 	payer @(
 		title: '{i18n>carrierPayer}',
@@ -692,7 +692,7 @@ annotate shipping_execution.CarrierPayer
 	account @();
 };
 
-annotate shipping_execution.DeliveryAttributes
+annotate DeliveryAttributes
 {
 	appointmentRequired @(
 		title: '{i18n>appointmentRequired}'
@@ -755,11 +755,11 @@ annotate shipping_execution.DeliveryAttributes
 	);
 }	
 
-annotate shipping_execution.Value @(
+annotate Value @(
 	title: '{i18n>amount}'
 );
 	
-annotate shipping_execution.Amount
+annotate .Amount
 {
 	currency @(
 		Common: {
@@ -770,19 +770,19 @@ annotate shipping_execution.Amount
 	);
 };
 	
-annotate shipping_execution.ShipDate @(
+annotate ShipDate @(
 	title: '{i18n>shipDate}'
 );
 
-annotate shipping_execution.RequiredDeliveryDate @(
+annotate RequiredDeliveryDate @(
 	title: '{i18n>requiredDeliveryDate}'
 );
 
-annotate shipping_execution.RequestedDeliveryDate @(
+annotate RequestedDeliveryDate @(
 	title: '{i18n>requestedDeliveryDate}'
 );
 
-annotate shipping_execution.References
+annotate References
 {
 	shipper @(
 		title: '{i18n>shipperReference}'
@@ -807,7 +807,7 @@ annotate shipping_execution.References
 	);
 }
 
-annotate shipping_execution.Partner
+annotate Partner
 {
 	partnerType	@(
 		Common: {
