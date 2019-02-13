@@ -4,7 +4,7 @@ using com.skipum.common.codes as cds from '@contax/skipum-common';
 using com.skipum.common.packaging as pkg from '@contax/skipum-common';
 using com.skipum.common.measures as msr from '@contax/skipum-common';
 using com.skipum.common.geographic as geo from '@contax/skipum-common';
-using com.skipum.common.businesPartner as bp from '@contax/skipum-common';
+using com.skipum.common.businessPartner as bp from '@contax/skipum-common';
 using com.skipum.common.contentSource as cs from '@contax/skipum-common';
 using com.skipum.common.businessObject as bo from '@contax/skipum-common';
 using com.skipum.common.currency as cur from '@contax/skipum-common';
