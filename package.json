@@ -1,9 +1,12 @@
 {
 	"name": "@contax/skipum-shippingExecution",
-	"description": "Skipum Shipping Exeuction CDS entities",
+	"description": "Skipum Shipping Execution CDS entities",
 	"version": "1.0.0",
 	"devDependencies": {
 		"@sap/cds": "^3.5.0"
+	},
+	"dependencies": {
+		"@contax/skipum-common": "https://github.com/RoseOrBlanche/skipum-cds-common.git"
 	},
 	"repository": {
 		"type": "git",
