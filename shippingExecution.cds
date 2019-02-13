@@ -1,4 +1,4 @@
-namespace com.skipum.shipingExecution;
+namespace com.skipum.shippingExecution;
 
 using com.skipum.common.codes as cds from '@contax/skipum-common';
 using com.skipum.common.packaging as pkg from '@contax/skipum-common';
