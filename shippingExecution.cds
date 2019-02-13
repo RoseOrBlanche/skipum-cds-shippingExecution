@@ -759,7 +759,7 @@ annotate Value @(
 	title: '{i18n>amount}'
 );
 	
-annotate .Amount
+annotate Amount
 {
 	currency @(
 		Common: {
@@ -817,3 +817,4 @@ annotate Partner
 			FieldControl : #ReadOnly,
 		}
 	);
+}
