@@ -689,7 +689,7 @@ annotate CarrierPayer
 			ValueListWithFixedValues
 		}
 	);
-	account @();
+	account;
 };
 
 annotate DeliveryAttributes
