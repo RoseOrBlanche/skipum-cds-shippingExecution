@@ -150,7 +150,14 @@ type References
 	miscellaneous5: String(50);
 };
 
-
+entity Shipment: bo.BusinessDocument {
+	identifier: String(40);
+	processingStatus : Association to ShipmentProcessingStatus;
+	printingStatus : Association to ShipmentPrintingStatus;
+	packingStatus : Association to ShipmentPackingStatus;
+	transmitStatus : Association to ShipmentTransmitStatus;
+	legs: Composition of many Leg.Leg on legs.shipment = $self;
+}
 
 /*
 UI Annotations
