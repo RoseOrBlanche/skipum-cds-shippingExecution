@@ -156,7 +156,150 @@ entity Shipment: bo.BusinessDocument {
 	printingStatus : Association to ShipmentPrintingStatus;
 	packingStatus : Association to ShipmentPackingStatus;
 	transmitStatus : Association to ShipmentTransmitStatus;
-	legs: Composition of many Leg.Leg on legs.shipment = $self;
+	legs: Composition of many Leg on legs.shipment = $self;
+}
+
+entity LegPartner: Partner
+{
+	key leg : Association to Leg;
+};
+
+
+entity Leg: bo.BusinessDocument {
+	key shipment : Association to Shipment;
+	identifier: String(40);
+	processingStatus : Association to LegProcessingStatus;
+	printingStatus : Association to LegPrintingStatus;
+	packingStatus : Association to LegPackingStatus;
+	transmitStatus : Association to LegTransmitStatus;
+	carrier: Association to car.Carrier;
+	service: Association to car.Service;
+	carrierPayer : CarrierPayer;
+	incoterms : Association to Incoterm;
+	shippingDates : ShippingDates;
+	references: References;
+	deliveryAttributes: DeliveryAttributes;
+	handlingUnits: Composition of many HandlingUnit on handlingUnits.leg = $self;
+	businessPartners: Composition of many LegPartner on businessPartners.leg = $self;
+	manifests: Composition of many Manifest on manifests.leg = $self;
+}
+
+type CountNumber: Integer;
+type CountLeg
+{
+	indexOf : CountNumber;
+	total : CountNumber;
+}
+
+type CountContainer
+{
+	indexOf : CountNumber;
+	total : CountNumber;
+}
+
+
+entity HandlingUnit: bo.BusinessDocument {
+	key leg : Association to Leg;
+	identifier: String(40);
+	description: String(80);
+	containerType : Association to pkg.ContainerType;
+	shippingWeight: msr.Weight;
+	contentWeight: msr.Weight;
+	tareWeight: msr.Weight;
+	scaleWeight: msr.Weight;
+	dimensions: msr.Dimensions;
+	packagingType : Association to pkg.PackagingType;
+	countLeg: CountLeg;
+	countContainer: CountContainer;
+}
+
+type DimensionalRated: Boolean;
+type HundredWeightRated: Boolean;
+type UPSGroundSaver: Boolean;
+
+type ChargeCode: cds.Code;
+entity ChargeCodes: cds.CodeList {
+	key code: ChargeCode;
+};
+
+type ProcessorChargeCode: String(60);
+
+abstract entity ChargeBase
+{
+	amount: Amount;
+	ratedWeight: msr.Weight;
+	dimensionalRated: DimensionalRated;
+	hundredWeightRated: HundredWeightRated;
+	UPSGroundSaver: UPSGroundSaver;
+};
+
+abstract entity ChargeItemBase
+{
+	key chargeCode : Association to ChargeCodes;
+	processorChargeCode: ProcessorChargeCode;
+	amount: Amount;
+};
+
+
+type TrackingNumber: String(60);
+type DeliveryZone: String(30);
+type Waybill: String(60);
+type ID: String(50);
+type ProcessorId: ID;
+type ProcessorGroupId: ID;
+type ProcessorManifestId: ID;
+type ProjectedDaysInTransit: Integer;
+type ProjectedDeliveryDate: Date;
+type CommitmentTime: Time;
+
+type ProjectedArrival
+{
+	daysInTransit: ProjectedDaysInTransit;
+	deliveryDate: ProjectedDeliveryDate;
+	commitmentTime: CommitmentTime;
+}
+
+entity Charge: ChargeBase
+{
+	key manifest: Association to Manifest;
+	items: Composition of many ChargeItem on items.charge = $self;
+}
+
+entity ChargeItem: ChargeItemBase
+{
+	key charge: Association to Charge;
+}
+
+entity Manifest: bo.BusinessObject {
+	key leg: Association to Leg;
+	processingStatus : Association to ManifestProcessingStatus;
+	shipDate: ShipDate;
+	processorId01: ProcessorId;
+	processorId02: ProcessorId;
+	processorGroupId01: ProcessorGroupId;
+	processorGroupId02: ProcessorGroupId;
+	projectedArrival: ProjectedArrival;
+	deliveryZone: DeliveryZone;
+	contentSource: cs.ContentSource;
+	processorReturn: cs.ProcessorReturn;
+	items: Composition of many Item on items.manifest = $self;
+	charges: Composition of many Charge on charges.manifest = $self;
+}
+
+entity Item {
+	key manifest : Association to Manifest;
+	processingStatus : Association to ManifestProcessingStatus;
+	trackingNumber: TrackingNumber;
+	trackingNumberAlternate01: TrackingNumber;
+	trackingNumberAlternate02: TrackingNumber;
+	waybill: Waybill;
+	processorId01: ProcessorId;
+	processorId02: ProcessorId;
+	processorGroupId01: ProcessorGroupId;
+	processorGroupId02: ProcessorGroupId;
+	processorManifestId01: ProcessorManifestId;
+	processorManifestId02: ProcessorManifestId;
+	projectedArrival: ProjectedArrival;
 }
 
 /*
