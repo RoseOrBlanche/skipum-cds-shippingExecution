@@ -664,5 +664,5 @@ annotate Partner
 }
 
 annotate Shipment @(
-	title: 'Shipment'
+	title: 'Testing Shipment'
 );
