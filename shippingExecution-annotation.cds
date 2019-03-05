@@ -1,7 +1,4 @@
 using com.skipum.shippingExecution from './shippingExecution';
-/*
-UI Annotations
-*/
 
 annotate ShipmentProcessingStatus
 @( // header-level annotations
@@ -665,3 +662,7 @@ annotate Partner
 		}
 	);
 }
+
+annotate Shipment @(
+	title: 'Shipment'
+);
