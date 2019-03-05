@@ -663,6 +663,16 @@ annotate Partner
 	);
 }
 
-annotate Shipment @(
-	title: 'Testing Shipment'
+annotate Shipment
+@( // header-level annotations
+	title: 'Testing Shipment',
+	UI:
+	{
+		Identification: [
+			{
+				$Type: 'UI.DataField',
+				Value: identifier
+			}
+		]
+	}
 );
